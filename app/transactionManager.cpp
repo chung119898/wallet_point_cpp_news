@@ -8,6 +8,10 @@ TransactionManager::TransactionManager() {
 }
 
 TransactionManager::~TransactionManager() {
+    if (db) {
+        sqlite3_close(db);
+        db = nullptr;
+    }
 }
 
 void TransactionManager::createTransactionTable() {

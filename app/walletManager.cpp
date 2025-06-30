@@ -8,6 +8,10 @@ WalletManager::WalletManager() {
 }
 
 WalletManager::~WalletManager() {
+    if (db) {
+        sqlite3_close(db);
+        db = nullptr;
+    }
 }
 
 string WalletManager::generateWalletId() {
